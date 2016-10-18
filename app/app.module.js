@@ -11,7 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
+var http_1 = require('@angular/http');
 var ng2_datetime_module_1 = require('ng2-datetime/src/ng2-datetime/ng2-datetime.module');
+// Imports for loading & configuring the in-memory web api
+var in_memory_web_api_module_1 = require('angular-in-memory-web-api/in-memory-web-api.module');
+var in_memory_data_service_1 = require('./in-memory-data.service');
+require('./rxjs-extensions');
 var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./dashboard.component');
 var hero_detail_component_1 = require('./hero-detail.component');
@@ -19,6 +24,7 @@ var heroes_component_1 = require('./heroes.component');
 var hero_service_1 = require('./hero.service');
 var app_routing_module_1 = require('./app-routing.module');
 var home_component_1 = require('./home.component');
+var hero_search_component_1 = require('./hero-search.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,14 +34,17 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 app_routing_module_1.AppRoutingModule,
-                ng2_datetime_module_1.NKDatetimeModule
+                ng2_datetime_module_1.NKDatetimeModule,
+                http_1.HttpModule,
+                in_memory_web_api_module_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { delay: 500 }),
             ],
             declarations: [
                 app_component_1.AppComponent,
                 dashboard_component_1.DashboardComponent,
                 hero_detail_component_1.HeroDetailComponent,
                 heroes_component_1.HeroesComponent,
-                home_component_1.HomeComponent
+                home_component_1.HomeComponent,
+                hero_search_component_1.HeroSearchComponent
             ],
             providers: [hero_service_1.HeroService],
             bootstrap: [app_component_1.AppComponent]

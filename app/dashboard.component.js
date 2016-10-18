@@ -16,6 +16,7 @@ var DashboardComponent = (function () {
         this.router = router;
         this.heroService = heroService;
         this.heroes = [];
+        this.mydate = new Date();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -25,6 +26,10 @@ var DashboardComponent = (function () {
         var link = ['/detail', hero.id];
         this.router.navigate(link);
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Date)
+    ], DashboardComponent.prototype, "mydate", void 0);
     DashboardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
